@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11100e">
+    <meta name="description" content="Build poker hands, beat the blind, and collect odd little upgrades in Pocket Parade.">
+    <title>Pocket Parade — a poker night roguelike</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Pocket Parade home">
+          <span class="brand-mark" aria-hidden="true">♠</span>
+          <span>POCKET PARADE<span class="brand-dot">.</span></span>
+        </a>
+        <span class="header-note"><span class="online-dot"></span> A LITTLE GAME OF BIG HANDS</span>
+      </header>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">A POKER NIGHT ROGUELIKE</p>
+          <h1>Play the hand.<br><span>Change the odds.</span></h1>
+          <p class="intro-copy">Make poker hands, outscore each blind, and pick up a few house advantages along the way.</p>
+        </div>
+        <div class="table-badge" aria-hidden="true"><span>ROUND</span><strong id="ante-number">01</strong><span id="ante-name">THE WARM-UP</span></div>
+      </section>
+
+      <section class="table" aria-label="Pocket Parade game">
+        <div class="table-header">
+          <div class="round-label"><span class="online-dot"></span><span id="round-name">ROUND 01 · THE WARM-UP</span></div>
+          <div class="wallet"><span aria-hidden="true">◆</span> <span id="money">$6</span></div>
+        </div>
+
+        <section class="welcome-panel" id="welcome-panel">
+          <div class="welcome-decoration" aria-hidden="true"><span>♣</span><span>♦</span><span>♠</span><span>♥</span></div>
+          <p class="eyebrow">THE TABLE IS YOURS</p>
+          <h2>One good hand<br>can change <em>everything.</em></h2>
+          <p>Choose five cards, make a poker hand, and score enough chips to beat each round's blind. Between rounds, pick an upgrade to bend the odds.</p>
+          <button class="primary-button" id="start-button" type="button">Take a seat <span aria-hidden="true">→</span></button>
+          <p class="fine-print">A fresh deck every round · No account, no downloads</p>
+        </section>
+
+        <section class="game-panel hidden" id="game-panel">
+          <div class="scoreboard">
+            <div class="blind-card">
+              <span class="stat-label">THE BLIND</span>
+              <strong id="target-score">300</strong>
+              <span class="stat-caption">chips to beat</span>
+            </div>
+            <div class="score-display">
+              <span class="stat-label">ROUND SCORE</span>
+              <strong id="round-score">0</strong>
+              <span class="score-progress"><i id="score-progress"></i></span>
+            </div>
+            <div class="turns-display">
+              <span class="stat-label">HANDS LEFT</span>
+              <strong id="hands-left">4</strong>
+              <span class="stat-caption"><span id="discards-left">3</span> discards</span>
+            </div>
+          </div>
+
+          <div class="hand-heading">
+            <div><span class="eyebrow">YOUR HAND</span><span class="hand-count" id="hand-count">8 CARDS</span></div>
+            <span class="selection-hint" id="selection-hint">Select 5 cards to play</span>
+          </div>
+          <div class="playing-cards" id="playing-cards" aria-label="Your cards"></div>
+
+          <div class="play-controls">
+            <p class="hand-preview" id="hand-preview" aria-live="polite">Pick five cards to see your hand.</p>
+            <div class="action-buttons">
+              <button class="secondary-button" id="discard-button" type="button" disabled>Discard selected</button>
+              <button class="primary-button play-button" id="play-button" type="button" disabled>Play hand <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+
+          <div class="upgrade-strip">
+            <div class="upgrade-heading"><span class="eyebrow">YOUR HOUSE ADVANTAGES</span><span id="upgrade-count">NONE YET</span></div>
+            <div class="upgrade-list" id="upgrade-list"></div>
+          </div>
+        </section>
+
+        <section class="shop-panel hidden" id="shop-panel">
+          <div class="shop-intro">
+            <span class="eyebrow">BETWEEN ROUNDS</span>
+            <h2>Visit the <em>back room.</em></h2>
+            <p id="shop-copy">Spend a little, stack an advantage, then head back to the table.</p>
+          </div>
+          <div class="shop-cards" id="shop-cards"></div>
+          <div class="shop-footer">
+            <p id="shop-status" role="status">Choose an upgrade, or save your cash.</p>
+            <button class="primary-button" id="continue-button" type="button">Next round <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section class="result-panel hidden" id="result-panel" aria-live="polite">
+          <span class="result-symbol" id="result-symbol" aria-hidden="true">✦</span>
+          <p class="eyebrow" id="result-eyebrow">NICE RUN</p>
+          <h2 id="result-title">The table remembers.</h2>
+          <p id="result-copy"></p>
+          <button class="primary-button" id="restart-button" type="button">Play another run <span aria-hidden="true">↻</span></button>
+        </section>
+
+        <div class="table-footer">
+          <span>♠ &nbsp; BUILT FOR ONE MORE HAND</span>
+          <span id="deck-status">52-CARD DECK</span>
+        </div>
+      </section>
+
+      <section class="how-to-play" aria-label="How to play">
+        <div><span class="step-number">01</span><p><strong>Choose five</strong><br>Click cards to select them.</p></div>
+        <div><span class="step-number">02</span><p><strong>Make a hand</strong><br>Pairs, straights, flushes &amp; more.</p></div>
+        <div><span class="step-number">03</span><p><strong>Beat the blind</strong><br>Score enough before hands run out.</p></div>
+      </section>
+
+      <footer class="site-footer">
+        <span>ORIGINAL GAME · MADE FOR THE LOVE OF CARDS</span>
+        <span>YOUR RUN STAYS IN THIS TAB.</span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+:root {
+  color-scheme: dark;
+  --paper: #f4eddf;
+  --muted: #aaa397;
+  --felt: #164d40;
+  --felt-dark: #10382f;
+  --panel: #171714;
+  --line: rgba(244, 237, 223, 0.13);
+  --gold: #edc77a;
+  --mint: #a4dbc0;
+  --red: #c84950;
+  --sans: "Space Grotesk", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(42, 68, 51, 0.17), transparent 38rem),
+    #11110f;
+  color: var(--paper);
+  font-family: var(--sans);
+}
+
+button, a { font: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.hidden { display: none !important; }
+
+.page-shell { width: min(1020px, calc(100% - 48px)); margin: 0 auto; }
+.topbar { height: 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-decoration: none; }
+.brand-mark { color: var(--gold); font-size: 20px; }
+.brand-dot { color: var(--gold); }
+.header-note, .eyebrow, .table-header, .stat-label, .stat-caption, .hand-count, .selection-hint, .upgrade-heading, .table-footer, .step-number, .site-footer, .fine-print {
+  font-family: var(--mono);
+  letter-spacing: .08em;
+}
+.header-note { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 9px; }
+.online-dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: var(--mint); box-shadow: 0 0 10px rgba(164, 219, 192, .5); }
+
+.intro { min-height: 200px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 27px 0; }
+.eyebrow { margin: 0 0 10px; color: var(--gold); font-size: 9px; }
+h1 { margin: 0; font-size: clamp(39px, 6vw, 59px); line-height: .98; letter-spacing: -.065em; }
+h1 span { color: var(--mint); }
+.intro-copy { max-width: 550px; margin: 12px 0 0; color: #b8b1a5; font-size: 13px; line-height: 1.6; }
+.table-badge { width: 96px; height: 96px; flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 1px solid rgba(237, 199, 122, .37); border-radius: 50%; color: var(--muted); font-family: var(--mono); font-size: 7px; transform: rotate(7deg); }
+.table-badge strong { color: var(--gold); font-family: var(--sans); font-size: 31px; letter-spacing: -.06em; }
+
+.table { overflow: hidden; border: 1px solid rgba(244, 237, 223, .17); border-radius: 9px; background: var(--panel); box-shadow: 0 24px 80px rgba(0, 0, 0, .24); }
+.table-header { height: 43px; display: flex; align-items: center; justify-content: space-between; padding: 0 19px; border-bottom: 1px solid var(--line); color: #c6beaf; font-size: 9px; }
+.round-label { display: flex; align-items: center; gap: 9px; }
+.wallet { color: var(--gold); font-size: 13px; }
+.wallet span:first-child { font-size: 9px; }
+
+.welcome-panel, .result-panel { min-height: 435px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 22px; background: radial-gradient(ellipse at center, rgba(30, 94, 72, .7), var(--felt-dark) 72%); text-align: center; }
+.welcome-decoration { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 50px; color: rgba(234, 220, 191, .075); font-size: clamp(95px, 17vw, 180px); pointer-events: none; }
+.welcome-decoration span:nth-child(2), .welcome-decoration span:nth-child(4) { transform: translateY(43px); }
+.welcome-panel > :not(.welcome-decoration) { position: relative; }
+.welcome-panel .eyebrow { margin-bottom: 12px; }
+.welcome-panel h2, .shop-intro h2, .result-panel h2 { margin: 0; font-size: clamp(31px, 5vw, 47px); letter-spacing: -.06em; line-height: 1.04; }
+.welcome-panel h2 em, .shop-intro h2 em { color: var(--gold); font-style: normal; }
+.welcome-panel > p:not(.eyebrow):not(.fine-print) { max-width: 420px; margin: 14px 0 20px; color: #c7cfc4; font-size: 12px; line-height: 1.7; }
+.fine-print { margin: 14px 0 0; color: rgba(232, 235, 223, .56); font-size: 8px; }
+
+.primary-button, .secondary-button { min-height: 39px; display: inline-flex; align-items: center; justify-content: center; gap: 13px; padding: 0 17px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 700; transition: transform 130ms ease, filter 130ms ease, opacity 130ms ease; }
+.primary-button { border: 1px solid var(--gold); background: var(--gold); color: #221d13; }
+.secondary-button { border: 1px solid rgba(244, 237, 223, .28); background: transparent; color: var(--paper); }
+.primary-button:hover:not(:disabled), .secondary-button:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); }
+.primary-button:disabled, .secondary-button:disabled { cursor: not-allowed; opacity: .38; }
+.primary-button span { font-size: 15px; }
+
+.game-panel { padding: 22px 24px 18px; background: radial-gradient(ellipse at 50% 37%, rgba(32, 92, 68, .95), var(--felt-dark) 75%); }
+.scoreboard { min-height: 83px; display: grid; grid-template-columns: 1fr 1.45fr 1fr; align-items: center; gap: 18px; padding: 0 10px 18px; border-bottom: 1px solid rgba(235, 239, 218, .17); text-align: center; }
+.stat-label, .stat-caption { display: block; color: rgba(235, 239, 218, .63); font-size: 8px; }
+.blind-card strong, .score-display strong, .turns-display strong { display: block; margin: 2px 0; color: var(--paper); font-size: 25px; letter-spacing: -.05em; }
+.blind-card strong { color: var(--gold); }
+.score-display strong { font-size: 29px; }
+.score-progress { width: min(165px, 85%); height: 4px; display: block; overflow: hidden; margin: 5px auto 0; border-radius: 5px; background: rgba(0, 0, 0, .25); }
+.score-progress i { width: 0; height: 100%; display: block; border-radius: inherit; background: var(--gold); transition: width 250ms ease; }
+.turns-display strong { font-size: 23px; }
+.hand-heading { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin: 19px 0 13px; }
+.hand-heading .eyebrow { margin: 0; color: #c3d3bf; }
+.hand-heading > div { display: flex; align-items: center; gap: 10px; }
+.hand-count, .selection-hint { color: rgba(238, 237, 222, .62); font-size: 8px; }
+
+.playing-cards { min-height: 142px; display: flex; align-items: center; justify-content: center; gap: clamp(4px, 1vw, 10px); padding: 5px 0 8px; }
+.playing-card { width: clamp(66px, 9.5vw, 91px); height: clamp(101px, 14vw, 132px); position: relative; display: flex; flex: 0 1 91px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(57, 47, 35, .22); border-radius: 7px; background: linear-gradient(145deg, #fffdf5, #e8e0d0); color: #24221e; cursor: pointer; box-shadow: 0 5px 9px rgba(0, 0, 0, .2); transition: transform 130ms ease, box-shadow 130ms ease; user-select: none; }
+.playing-card:hover { z-index: 2; transform: translateY(-6px); }
+.playing-card.selected { transform: translateY(-13px); box-shadow: 0 11px 18px rgba(0, 0, 0, .3); outline: 2px solid var(--gold); outline-offset: 1px; }
+.playing-card.red-suit { color: var(--red); }
+.card-corner { position: absolute; top: 7px; left: 8px; display: flex; flex-direction: column; align-items: center; line-height: .95; font-size: 15px; font-weight: 700; }
+.card-corner small { margin-top: 3px; font-size: 12px; }
+.card-pip { font-size: clamp(28px, 4vw, 39px); }
+.playing-card.face-card { background: radial-gradient(circle at 50% 48%, #fffdf6, #e2d4b9); }
+.face-letter { position: absolute; right: 7px; bottom: 4px; color: rgba(132, 102, 56, .25); font-family: Georgia, serif; font-size: 46px; font-weight: 700; }
+.playing-card:disabled { cursor: default; }
+
+.play-controls { min-height: 63px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 11px 1px 13px; border-top: 1px solid rgba(235, 239, 218, .17); }
+.hand-preview { margin: 0; color: #e0d6b7; font-size: 11px; }
+.hand-preview strong { color: #fff3d0; }
+.action-buttons { display: flex; gap: 8px; }
+.action-buttons button { min-height: 35px; font-size: 10px; }
+.play-button { min-width: 120px; }
+.upgrade-strip { padding-top: 12px; border-top: 1px solid rgba(235, 239, 218, .17); }
+.upgrade-heading { display: flex; justify-content: space-between; color: rgba(235, 239, 218, .58); font-size: 8px; }
+.upgrade-heading .eyebrow { margin: 0; color: #c3d3bf; font-size: 8px; }
+.upgrade-list { min-height: 26px; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 8px; }
+.upgrade-chip { padding: 4px 8px; border: 1px solid rgba(237, 199, 122, .28); border-radius: 20px; color: #ead8ad; font-size: 9px; }
+
+.shop-panel { min-height: 435px; padding: 36px clamp(20px, 5vw, 52px) 25px; background: radial-gradient(ellipse at 50% 0%, rgba(39, 86, 64, .8), var(--felt-dark) 78%); }
+.shop-intro { text-align: center; }
+.shop-intro h2 { font-size: clamp(30px, 5vw, 42px); }
+.shop-intro p { margin: 9px 0 21px; color: #c3cabc; font-size: 11px; }
+.shop-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.upgrade-card { min-height: 157px; display: flex; flex-direction: column; align-items: flex-start; padding: 15px; border: 1px solid rgba(245, 235, 205, .22); border-radius: 7px; background: rgba(17, 23, 20, .78); text-align: left; }
+.upgrade-icon { width: 30px; height: 30px; display: grid; place-items: center; margin-bottom: 10px; border-radius: 50%; background: rgba(237, 199, 122, .14); color: var(--gold); font-size: 14px; }
+.upgrade-card h3 { margin: 0; color: var(--paper); font-size: 13px; }
+.upgrade-card p { flex: 1; margin: 6px 0 12px; color: #aaa99a; font-size: 10px; line-height: 1.45; }
+.buy-button { width: 100%; min-height: 29px; border: 1px solid rgba(237, 199, 122, .42); border-radius: 3px; background: transparent; color: var(--gold); cursor: pointer; font-family: var(--mono); font-size: 9px; }
+.buy-button:hover:not(:disabled) { background: rgba(237, 199, 122, .12); }
+.buy-button:disabled { cursor: not-allowed; opacity: .35; }
+.shop-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(235, 239, 218, .17); }
+.shop-footer p { margin: 0; color: #c3cabc; font-size: 10px; }
+.shop-footer .primary-button { min-height: 34px; white-space: nowrap; }
+
+.result-panel { min-height: 435px; background: radial-gradient(ellipse at center, rgba(30, 94, 72, .7), var(--felt-dark) 72%); }
+.result-symbol { margin-bottom: 9px; color: var(--gold); font-size: 27px; }
+.result-panel h2 { max-width: 480px; }
+.result-panel > p:not(.eyebrow) { max-width: 400px; margin: 12px 0 20px; color: #c7cfc4; font-size: 12px; line-height: 1.6; }
+
+.table-footer { min-height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; border-top: 1px solid var(--line); color: #807b70; font-size: 8px; }
+.how-to-play { min-height: 91px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 3px; }
+.how-to-play > div { display: flex; align-items: center; gap: 10px; }
+.step-number { color: var(--gold); font-size: 9px; }
+.how-to-play p { margin: 0; color: #979287; font-size: 9px; line-height: 1.55; }
+.how-to-play strong { color: #ddd5c8; font-size: 10px; font-weight: 500; }
+.site-footer { min-height: 53px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); color: #6f6b62; font-size: 8px; }
+
+@media (max-width: 700px) {
+  .page-shell { width: min(100% - 28px, 560px); }
+  .topbar { height: 61px; }
+  .header-note { font-size: 7px; }
+  .intro { min-height: 165px; }
+  .table-badge { width: 75px; height: 75px; font-size: 6px; }
+  .table-badge strong { font-size: 25px; }
+  .game-panel { padding: 17px 13px 14px; }
+  .playing-cards { gap: 4px; min-height: 120px; }
+  .playing-card { min-width: 0; height: clamp(88px, 18vw, 112px); }
+  .card-corner { top: 5px; left: 5px; font-size: 12px; }
+  .card-corner small { font-size: 10px; }
+  .play-controls { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .action-buttons { width: 100%; }
+  .action-buttons button { flex: 1; }
+  .shop-panel { padding: 28px 15px 19px; }
+  .upgrade-card { min-height: 150px; padding: 11px; }
+  .upgrade-card p { font-size: 9px; }
+  .how-to-play { flex-wrap: wrap; justify-content: flex-start; gap: 13px 23px; }
+  .site-footer { font-size: 7px; }
+}
+
+@media (max-width: 430px) {
+  .page-shell { width: calc(100% - 20px); }
+  .brand { gap: 6px; font-size: 10px; }
+  .header-note { gap: 5px; font-size: 6px; letter-spacing: .02em; }
+  .intro-copy { max-width: 260px; font-size: 11px; }
+  .table-badge { width: 62px; height: 62px; }
+  .table-header { padding: 0 11px; font-size: 7px; }
+  .welcome-panel, .result-panel { min-height: 390px; }
+  .welcome-decoration { gap: 24px; }
+  .game-panel { padding-right: 8px; padding-left: 8px; }
+  .scoreboard { gap: 5px; padding-right: 0; padding-left: 0; }
+  .stat-label, .stat-caption { font-size: 7px; }
+  .blind-card strong, .turns-display strong { font-size: 21px; }
+  .score-display strong { font-size: 25px; }
+  .playing-cards { min-height: 0; flex-wrap: wrap; gap: 10px 8px; padding: 5px 0 12px; }
+  .playing-card { height: 86px; max-width: 66px; flex-basis: calc((100% - 24px) / 4); border-radius: 5px; }
+  .card-corner { top: 4px; left: 4px; font-size: 10px; }
+  .card-corner small { margin-top: 2px; font-size: 8px; }
+  .card-pip { font-size: 23px; }
+  .face-letter { right: 4px; bottom: 2px; font-size: 34px; }
+  .hand-heading > div { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .selection-hint { text-align: right; }
+  .shop-cards { grid-template-columns: 1fr; }
+  .upgrade-card { min-height: auto; display: grid; grid-template-columns: 30px 1fr auto; align-items: center; column-gap: 9px; padding: 10px; }
+  .upgrade-icon { grid-row: span 2; margin: 0; }
+  .upgrade-card h3 { align-self: end; font-size: 12px; }
+  .upgrade-card p { grid-column: 2; align-self: start; margin: 3px 0 0; }
+  .buy-button { width: auto; grid-column: 3; grid-row: 1 / span 2; padding: 0 8px; }
+  .shop-footer { align-items: flex-start; }
+  .shop-footer p { max-width: 155px; line-height: 1.4; }
+  .table-footer { padding: 0 9px; font-size: 7px; }
+  .site-footer { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
